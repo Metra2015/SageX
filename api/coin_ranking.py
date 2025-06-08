@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from services.coin_ranking_service import get_top_ranked_coins
-from database.session import get_db  # Make sure this path is correct
+from core.database import get_db  # Make sure this path is correct
 
 router = APIRouter()
 
