@@ -19,7 +19,7 @@ def add_coin_rank(db: Session, data: CoinRankCreate):
     return rank_entry
 
 
-def get_top_coins(db: Session, limit: int = 10):
+def get_top_ranked_coins(db: Session, limit: int = 10):
     return db.query(CoinRanking).order_by(
         CoinRanking.created_at.desc(), CoinRanking.rank.asc()
     ).limit(limit).all()
