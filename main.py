@@ -7,6 +7,9 @@ from core.database import engine, Base
 from api import auth, trade, training, knowledge, notifications, coin_ranking
 from core.database import SessionLocal
 from api import debug
+from core.config import settings
+
+
 
 
 
@@ -37,6 +40,9 @@ app.include_router(knowledge.router, prefix="/knowledge", tags=["Knowledge Cente
 app.include_router(notifications.router, prefix="/notifications", tags=["Notifications"])
 app.include_router(coin_ranking.router, prefix="/ranking", tags=["Coin Ranking"])
 app.include_router(debug.router, prefix="/debug", tags=["Debug"])
+
+
+print(f"🔌 Connected to DB: {settings.DB_URL}")
 
 def test_db_connection():
     try:
