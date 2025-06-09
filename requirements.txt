@@ -10,4 +10,5 @@ xgboost
 scikit-learn
 pandas
 numpy
-email-validator
+pydantic[email]
+
