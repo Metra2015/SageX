@@ -11,4 +11,5 @@ scikit-learn
 pandas
 numpy
 pydantic[email]
+passlib[bcrypt]
 
