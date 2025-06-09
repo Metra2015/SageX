@@ -6,6 +6,11 @@ from core.config import settings
 from core.database import engine, Base
 from api import auth, trade, training, knowledge, notifications, coin_ranking
 from core.database import SessionLocal
+from api import debug
+
+
+
+app.include_router(debug.router, prefix="/debug", tags=["Debug"])
 
 
 # Create all tables
