@@ -10,9 +10,6 @@ from api import debug
 
 
 
-app.include_router(debug.router, prefix="/debug", tags=["Debug"])
-
-
 # Create all tables
 Base.metadata.create_all(bind=engine)
 
@@ -39,7 +36,7 @@ app.include_router(training.router, prefix="/training", tags=["Training"])
 app.include_router(knowledge.router, prefix="/knowledge", tags=["Knowledge Center"])
 app.include_router(notifications.router, prefix="/notifications", tags=["Notifications"])
 app.include_router(coin_ranking.router, prefix="/ranking", tags=["Coin Ranking"])
-
+app.include_router(debug.router, prefix="/debug", tags=["Debug"])
 
 def test_db_connection():
     try:
