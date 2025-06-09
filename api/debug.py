@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from sqlalchemy import text
 from core.database import SessionLocal
 
 router = APIRouter()
@@ -7,7 +8,7 @@ router = APIRouter()
 def check_db():
     try:
         db = SessionLocal()
-        db.execute("SELECT 1")
+        db.execute(text("SELECT 1"))
         db.close()
         return {"status": "connected"}
     except Exception as e:
