@@ -5,6 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from core.config import settings
 from core.database import engine, Base
 from api import auth, trade, training, knowledge, notifications, coin_ranking
+from core.database import SessionLocal
+
 
 # Create all tables
 Base.metadata.create_all(bind=engine)
@@ -33,7 +35,21 @@ app.include_router(knowledge.router, prefix="/knowledge", tags=["Knowledge Cente
 app.include_router(notifications.router, prefix="/notifications", tags=["Notifications"])
 app.include_router(coin_ranking.router, prefix="/ranking", tags=["Coin Ranking"])
 
+
+def test_db_connection():
+    try:
+        db = SessionLocal()
+        db.execute("SELECT 1")  # Basic ping
+        db.close()
+        print("✅ Database connected successfully.")
+    except Exception as e:
+        print(f"❌ Database connection failed: {e}")
+
 # Root endpoint
 @app.get("/")
 def root():
     return {"message": "Welcome to SageX API"}
+
+
+
+
